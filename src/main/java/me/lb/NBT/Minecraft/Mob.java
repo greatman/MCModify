@@ -26,14 +26,15 @@
 |* SUCH DAMAGE.                                                               *|
 \******************************************************************************/
 
-package NBT.Minecraft;
+package me.lb.NBT.Minecraft;
 
-import NBT.Tag;
-import NBT.FormatException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+
+import me.lb.NBT.FormatException;
+import me.lb.NBT.Tag;
 
 /**
  * Mob entities

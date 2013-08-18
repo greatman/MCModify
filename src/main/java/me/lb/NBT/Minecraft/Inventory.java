@@ -26,15 +26,16 @@
 |* SUCH DAMAGE.                                                               *|
 \******************************************************************************/
 
-package NBT.Minecraft;
+package me.lb.NBT.Minecraft;
 
-import NBT.Tag;
-import NBT.FormatException;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
+
+import me.lb.NBT.FormatException;
+import me.lb.NBT.Tag;
 
 /**
  * The class used for various inventories.

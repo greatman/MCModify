@@ -25,22 +25,23 @@
 |* OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF     *|
 |* SUCH DAMAGE.                                                               *|
 \******************************************************************************/
+package me.lb;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import NBT.Tag;
-import NBT.Serialization.NBTable;
-import NBT.Minecraft.Map;
+import me.lb.NBT.Tag;
+import me.lb.NBT.Serialization.NBTable;
+import me.lb.NBT.Minecraft.Map;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
-import NBT.Minecraft.Level;
-import NBT.Minecraft.Inventory;
-import static NBT.Minecraft.IDs.*;
-import NBT.Minecraft.Region;
-import NBT.Minecraft.Chunk;
+import me.lb.NBT.Minecraft.Level;
+import me.lb.NBT.Minecraft.Inventory;
+import static me.lb.NBT.Minecraft.IDs.*;
+import me.lb.NBT.Minecraft.Region;
+import me.lb.NBT.Minecraft.Chunk;
 
 /**
  * Main (test) Class
@@ -60,7 +61,7 @@ public class MCModify
 			Tag.Compound level;
 			try(FileInputStream fis = new FileInputStream("level.dat"))
 			{
-				level = NBT.IO.Read(fis); //Read it from any Input stream!
+				level = me.lb.NBT.IO.Read(fis); //Read it from any Input stream!
 			}
 
 			System.out.println(level); //See the pretty structure!
@@ -71,7 +72,7 @@ public class MCModify
 
 			try(FileOutputStream fos = new FileOutputStream("level.dat_mca")) //Save it back...in the future!
 			{
-				NBT.IO.Write(level, fos); //Write it to any Output stream!
+				me.lb.NBT.IO.Write(level, fos); //Write it to any Output stream!
 			}
 		}
 
@@ -82,7 +83,7 @@ public class MCModify
 			Tag.Compound idcounts;
 			try(FileInputStream fis = new FileInputStream("idcounts.dat"))
 			{
-				idcounts = NBT.IO.ReadUncompressed(fis); //Also works for servers.dat!
+				idcounts = me.lb.NBT.IO.ReadUncompressed(fis); //Also works for servers.dat!
 			}
 			System.out.println("Last created map number: "+((Tag.Short)idcounts.Find(Tag.Type.SHORT, "map")).v);
 		}
@@ -91,12 +92,12 @@ public class MCModify
 
 		{
 			System.out.println(">>>TEST 2: Serialize an NBTable class to a compound tag and load it back again.");
-			Tag.Compound serializationTest = NBT.Serialization.IO.Serialize("Test", new TestClass(), false); //Serialize it!
+			Tag.Compound serializationTest = me.lb.NBT.Serialization.IO.Serialize("Test", new TestClass(), false); //Serialize it!
 			System.out.println(serializationTest); //Print it!
 
 			System.out.println();
 
-			TestClass tc = (TestClass)NBT.Serialization.IO.Deserialize(TestClass.class, null, serializationTest); //Deserialize it!
+			TestClass tc = (TestClass)me.lb.NBT.Serialization.IO.Deserialize(TestClass.class, null, serializationTest); //Deserialize it!
 			System.out.println(tc); //Print the other it!
 		}
 
@@ -107,7 +108,7 @@ public class MCModify
 			Map map;
 			try(FileInputStream fis = new FileInputStream("map.dat"))
 			{
-				map = new Map(NBT.IO.Read(fis));
+				map = new Map(me.lb.NBT.IO.Read(fis));
 			}
 
 			BufferedImage mapimage = map.Image(); //Yep, Images!
@@ -119,7 +120,7 @@ public class MCModify
 
 			try(FileOutputStream fos = new FileOutputStream("map_.dat"))
 			{
-				NBT.IO.Write(map.ToNBT(""), fos);
+				me.lb.NBT.IO.Write(map.ToNBT(""), fos);
 			}
 		}
 
@@ -130,7 +131,7 @@ public class MCModify
 			Level level;
 			try(FileInputStream fis = new FileInputStream("level.dat_mca"))
 			{
-				level = new Level(NBT.IO.Read(fis));
+				level = new Level(me.lb.NBT.IO.Read(fis));
 			}
 
 			Level.Player player = level.Player(); //Edit the singplayer player!
@@ -144,7 +145,7 @@ public class MCModify
 
 			try(FileOutputStream fos = new FileOutputStream("level.dat_mca"))
 			{
-				NBT.IO.Write(level.ToNBT(""), fos);
+				me.lb.NBT.IO.Write(level.ToNBT(""), fos);
 			}
 		}
 
@@ -161,7 +162,7 @@ public class MCModify
 					Chunk chunk = region.ReadChunk(x, z); //Simple as that!
 					if(chunk != null)
 					{
-						chunk.Entities().add(new NBT.Minecraft.Mob.EnderDragon(x*16+8, 96, z*16+8)); //Entity lists!
+						chunk.Entities().add(new me.lb.NBT.Minecraft.Mob.EnderDragon(x*16+8, 96, z*16+8)); //Entity lists!
 					}
 					newregion.WriteChunk(x, z, chunk); //Deletes the chunk if it is null!
 				}

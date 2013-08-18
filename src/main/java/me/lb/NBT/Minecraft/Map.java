@@ -26,10 +26,11 @@
 |* SUCH DAMAGE.                                                               *|
 \******************************************************************************/
 
-package NBT.Minecraft;
+package me.lb.NBT.Minecraft;
 
-import NBT.Tag;
-import NBT.FormatException;
+import me.lb.NBT.FormatException;
+import me.lb.NBT.Tag;
+
 import java.awt.image.IndexColorModel;
 import java.awt.image.BufferedImage;
 import java.awt.Color;

@@ -26,10 +26,8 @@
 |* SUCH DAMAGE.                                                               *|
 \******************************************************************************/
 
-package NBT.Serialization;
+package me.lb.NBT.Serialization;
 
-import NBT.FormatException;
-import NBT.Tag;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -37,6 +35,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+
+import me.lb.NBT.FormatException;
+import me.lb.NBT.Tag;
 
 /**
  * This class can serialize and deserialize classes that implement <code>NBTable</code> to/from NBT structures.

@@ -26,7 +26,7 @@
 |* SUCH DAMAGE.                                                               *|
 \******************************************************************************/
 
-package NBT;
+package me.lb.NBT;
 
 import java.io.InputStream;
 import java.io.OutputStream;
