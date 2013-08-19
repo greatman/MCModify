@@ -384,7 +384,7 @@ public class Chunk
 		{
 			throw new FormatException("Invalid Entities list; expected list of Compound, got list of "+entitylist.Supports(), original);
 		}
-		for(Tag t : entitylist)
+		/*for(Tag t : entitylist)
 		{
 			Tag.Compound entity = (Tag.Compound)t;
 			Constructor<? extends Entity> econs;
@@ -399,13 +399,13 @@ public class Chunk
 			}
 			try
 			{
-				entities.add(econs.newInstance(entity));
+				//entities.add(econs.newInstance(entity));
 			}
 			catch(InstantiationException|IllegalAccessException|InvocationTargetException e)
 			{
 				throw new FormatException(e, original);
 			}
-		}
+		}*/
 		Tag.List tileentitylist = (Tag.List)chunk.Find(Tag.Type.LIST, "TileEntities");
 		if(tileentitylist.Size() > 0 && tileentitylist.Supports() != Tag.Type.COMPOUND)
 		{
