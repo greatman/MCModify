@@ -789,17 +789,6 @@ public class Level
 		lastplayed = ((Tag.Long)level.Find(Tag.Type.LONG, "LastPlayed")).v;
 		sizeondisk = ((Tag.Long)level.Find(Tag.Type.LONG, "SizeOnDisk")).v;
 		Tag.Compound plr = null;
-		try
-		{
-			plr = (Tag.Compound)level.Find(Tag.Type.COMPOUND, "Player");
-		}
-		catch(FormatException e)
-		{
-		}
-		if(plr != null)
-		{
-			player = new Player(plr);
-		}
 	}
 
 	/**
